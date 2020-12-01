@@ -9,7 +9,7 @@ https://github.com/jduncan9720/express-note-taker-BC2
 ## Assignment:
 The note taker is an application which enables users to write, save and delete notes.
 
-**NOTE** Something is wrong with my delete code.  Not even my teacher could quite figure out how to fix it.  It will delete the data in the db.json file but will not show this on the DOM. 
+**NOTE** Something is wrong with my delete code.  Not even my teacher could quite figure out how to fix it in the time we had.  It will delete the data in the db.json file but will not show this on the DOM. I tried various different api Delete routes all with the same outcome. 
 
 Homework criteria:
 
