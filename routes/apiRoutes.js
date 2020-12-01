@@ -24,6 +24,7 @@ module.exports = function(app){
 
     app.delete("/api/notes/:id", function(req, res){
         const filteredNotes = notesData.filter(note => note.id !== req.params.id);
+        console.log("filtered", filteredNotes)
         fs.writeFile("db/db.json", JSON.stringify(filteredNotes), function(err, log){
             if (err){
                 throw err
