@@ -26,22 +26,19 @@ module.exports = function(app){
         })
     });
 
-    app.delete("/api/notes/:id", (req, res) => {
+    app.delete("/api/notes/:id", function(req, res){
+        let filteredNotes = notesData.filter(note => note.id !== req.params.id);
+        console.log("filtered", filteredNotes)
+        return writeFileAsync("db/db.json", JSON.stringify(filteredNotes)).then(function(err, log){
+            if (err){
+                throw err
+            } else {
+               return res.json({
+                   ok: true
+               })
+            }
+        })
 
-        let noteId = req.params.id;
-    
-        fs.readFile("./db/db.json", "utf8", (err, data) => {
-          if (err) throw err;
-    
-          const allNotes = JSON.parse(data);
-          const newAllNotes = allNotes.filter(note => note.id != noteId);
-    
-          fs.writeFile("./db/db.json", JSON.stringify(newAllNotes, null, 2), err => {
-            if (err) throw err;
-            res.send(notesData);
-            console.log("Note deleted!")
-          });
-        });
-      });
+    })
 
 }
